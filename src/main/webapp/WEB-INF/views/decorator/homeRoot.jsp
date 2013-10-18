@@ -7,112 +7,75 @@
 <title>PLM - <sitemesh:write property='title' /></title>
 <sitemesh:write property='head' />
 
-<link rel="stylesheet"
-	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/sunny/jquery-ui.css" />
+<!-- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/sunny/jquery-ui.css" /> -->
 <!-- http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/sunny/jquery-ui.css
 	http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css -->
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+
+
+<!-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> -->
 <script>
 	$(function() {
-		
-		$( "#accordion" ).accordion();
-		
-		var availableTags = [
-			"ActionScript",
-			"AppleScript",
-			"Asp",
-			"BASIC",
-			"C",
-			"C++",
-			"Clojure",
-			"COBOL",
-			"ColdFusion",
-			"Erlang",
-			"Fortran",
-			"Groovy",
-			"Haskell",
-			"Java",
-			"JavaScript",
-			"Lisp",
-			"Perl",
-			"PHP",
-			"Python",
-			"Ruby",
-			"Scala",
-			"Scheme"
-		];
-		$( "#autocomplete" ).autocomplete({
-			source: availableTags
+
+		$("#accordion").accordion();
+
+		var availableTags = [ "ActionScript", "AppleScript", "Asp", "BASIC",
+				"C", "C++", "Clojure", "COBOL", "ColdFusion", "Erlang",
+				"Fortran", "Groovy", "Haskell", "Java", "JavaScript", "Lisp",
+				"Perl", "PHP", "Python", "Ruby", "Scala", "Scheme" ];
+		$("#autocomplete").autocomplete({
+			source : availableTags
 		});
-		
 
-		
-		$( "#button" ).button();
-		$( "#radioset" ).buttonset();
-		
+		$("#button").button();
+		$("#radioset").buttonset();
 
-		
-		$( "#tabs" ).tabs();
-		
+		$("#tabs").tabs();
 
-		
-		$( "#dialog" ).dialog({
-			autoOpen: false,
-			width: 400,
-			buttons: [
-				{
-					text: "Ok",
-					click: function() {
-						$( this ).dialog( "close" );
-					}
-				},
-				{
-					text: "Cancel",
-					click: function() {
-						$( this ).dialog( "close" );
-					}
+		$("#dialog").dialog({
+			autoOpen : false,
+			width : 400,
+			buttons : [ {
+				text : "Ok",
+				click : function() {
+					$(this).dialog("close");
 				}
-			]
+			}, {
+				text : "Cancel",
+				click : function() {
+					$(this).dialog("close");
+				}
+			} ]
 		});
 
 		// Link to open the dialog
-		$( "#dialog-link" ).click(function( event ) {
-			$( "#dialog" ).dialog( "open" );
+		$("#dialog-link").click(function(event) {
+			$("#dialog").dialog("open");
 			event.preventDefault();
 		});
-		
 
-		
-		$( "#datepicker" ).datepicker({
-			inline: true
+		$("#datepicker").datepicker({
+			inline : true
 		});
-		
 
-		
-		$( "#slider" ).slider({
-			range: true,
-			values: [ 17, 67 ]
+		$("#slider").slider({
+			range : true,
+			values : [ 17, 67 ]
 		});
-		
 
-		
-		$( "#progressbar" ).progressbar({
-			value: 20
+		$("#progressbar").progressbar({
+			value : 20
 		});
-		
 
 		// Hover states on the static widgets
-		$( "#dialog-link, #icons li" ).hover(
-			function() {
-				$( this ).addClass( "ui-state-hover" );
-			},
-			function() {
-				$( this ).removeClass( "ui-state-hover" );
-			}
-		);
+		$("#dialog-link, #icons li").hover(function() {
+			$(this).addClass("ui-state-hover");
+		}, function() {
+			$(this).removeClass("ui-state-hover");
+		});
 	});
-	</script>
+</script>
 
 <style>
 body {
@@ -161,25 +124,67 @@ body {
 	position: absolute;
 }
 </style>
+
+<style>
+/* **************** GRIDS ***************** */
+.line:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.lastUnit:after{content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";visibility:hidden; clear:both;height:0 !important;display:block;line-height:0;}
+.line{*zoom:1;}
+.unit{float:left;}
+.size1of1{float:none;}
+.size1of2{width:70%;}
+.size1of3{width:33.33333%;}
+.size2of3{width:66.66666%;}
+.size1of4{width:15%;}
+.size3of4{width:75%;}
+.size1of5{width:20%;}
+.size2of5{width:40%;}
+.size3of5{width:60%;}
+.size4of5{width:80%;}
+.lastUnit {display: table-cell; *display:block;*zoom:1;float:none;_position:relative; _left:-3px; _margin-right: -3px;width:auto;}
+</style>
 </head>
 
 <body>
-	<div style="color: black">
-		<div id="header" style="text-align: right;">
-			<ul>
-				<li style="list-style: none; font-size: medium;"><a href='home'>Home</a> | <a style="font-size: medium;"
-					href="javascript:closeWindow();">Logout</a></li>
-			</ul>
-		</div>
-		<h1 style="text-align: center; font-size: xx-large;">${app_name}</h1>
 
-		<sitemesh:write property='body' />
 
+<div class="line">
+	<div class="unit size1of4">
+		<p>Create a Project</p>
+		<p>Find Project</p>
+		<p>Add Customer</p>
 	</div>
+	
+	<div class="unit size1of2 lastUnit">
+		<div style="color: black">
+				<div id="header" style="text-align: right;">
+					<ul>
+						<li style="list-style: none; font-size: medium;"><a
+							href='home'>Home</a> | <a style="font-size: medium;"
+							href="javascript:closeWindow();">Logout</a></li>
+							<li style="list-style: none; font-size: medium;">${username}</li>
+					</ul>
+				</div>
+				<h1 style="text-align: center; font-size: xx-large;">${app_name}</h1>
 
-	<div id="accordion" style="text-align: center; margin: 0 auto; font-size: medium;">
+				<sitemesh:write property='body' />
+
+			</div>
+	</div>
+	
+	<div class="unit size1of4">
+		<p>Tasks</p>
+	</div>
+</div>
+
+
+
+	<div
+		style="text-align: center; margin: 0 auto; font-size: medium;">
 		<p>PLM System ${year} ${version}</p>
-		<p><a href='home'>Home</a> | <a href="javascript:closeWindow();">Logout</a></p>
+		<p>
+			<a href='home'>Home</a> | <a href="javascript:closeWindow();">Logout</a>
+		</p>
 	</div>
 </body>
 

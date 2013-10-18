@@ -12,6 +12,7 @@
 		<!-- Don't set any role restrictions on login.jsp -->
     <intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
     
+    
 		<!-- Restrict access to ALL other pages -->
     <intercept-url pattern="/**" access="ROLE_USER" />
     
@@ -24,6 +25,7 @@
 	  <authentication-provider>
 		<user-service>
 			<user name="temp" password="123" authorities="ROLE_USER" />
+			<user name="admin" password="admin" authorities="ROLE_USER"/>
 		</user-service>
 	  </authentication-provider>
 	</authentication-manager>

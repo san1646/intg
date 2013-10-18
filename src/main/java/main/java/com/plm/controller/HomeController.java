@@ -1,15 +1,20 @@
 package main.java.com.plm.controller;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import main.java.com.plm.form.Contact;
-import main.java.com.plm.form.Project;
+import main.java.com.plm.model.KnightedWBSTechnology;
+import main.java.com.plm.model.Project;
 import main.java.com.plm.service.ContactService;
-import main.java.com.plm.service.impl.ProjectManagerImpl;
+import main.java.com.plm.service.ProjectService;
+import main.java.com.plm.service.impl.ProjectServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -32,6 +37,9 @@ public class HomeController {
 	
 	@Autowired
 	    private ContactService contactService;
+	
+	@Autowired
+    private ProjectService projectService;
 
 
 	@RequestMapping(value = "/", method = { RequestMethod.GET })
@@ -58,7 +66,9 @@ public class HomeController {
 	
 	@RequestMapping(value = "/home", method = { RequestMethod.GET })
 	public String home(final HttpServletRequest request,
-            final HttpServletResponse response, Map<String, Object> model) {
+            final HttpServletResponse response, 
+            Map<String, Object> model,
+            HttpSession session) {
 		
 		 log.info("***Request object received for method "
                 + request.getMethod());
@@ -66,6 +76,16 @@ public class HomeController {
 		String version = resources.getMessage("curr_version", null, "v0.1.1", null);
 		String year = resources.getMessage("curr_year", null, "2013", null);
 		String app_name = resources.getMessage("app_name", null, "PLM", null);
+		String username = session.getAttribute("username").toString();
+		model.put("username", username);
+		
+		//To list all the projects
+		List<Project> projects = new ArrayList<Project>();
+		projects = projectService.getProjects();
+		
+		model.put("projects", projects);
+		//Remove the editProject object from the session
+		session.removeAttribute("editProject");
 		
 		 model.put("version", version);
 		 model.put("year", year);
@@ -136,13 +156,24 @@ public class HomeController {
 		return "compareResults";
 	}
 
-	@RequestMapping(value="/savedata")
-	public String saveToDb() { //@RequestParam("contact") Contact contact
+	@RequestMapping(value="/savedata", method = { RequestMethod.GET })
+	public String saveToDb(final HttpServletRequest request,
+            final HttpServletResponse response, Map<String, Object> model) { //@RequestParam("contact") Contact contact
 		try{
-			Contact contact = new Contact(new Integer(204), "Toto", "Chan", "totochan@toto.chan", "3669");
+			Contact contact = new Contact("Toto", "Chan", "totochan@toto.chan", "3669");
 		contactService.insert(contact);
 		System.out.println("Contact inserted!");
 		log.info("***Project inserted!");
+		
+		MessageSource resources = new ClassPathXmlApplicationContext("beans.xml");
+		String version = resources.getMessage("curr_version", null, "v0.1.1", null);
+		String year = resources.getMessage("curr_year", null, "2013", null);
+		String app_name = resources.getMessage("app_name", null, "PLM", null);
+		
+		 model.put("version", version);
+		 model.put("year", year);
+		 model.put("app_name", app_name);
+		 
 		}catch(Exception e){	
 			log.info("***Exception ---!!!"+e.getLocalizedMessage());
 			log.info("***Exception ---~~~"+e.getMessage());

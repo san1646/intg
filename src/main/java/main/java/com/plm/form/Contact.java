@@ -3,25 +3,29 @@ package main.java.com.plm.form;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
  
 @Entity
 @Table(name="CONTACTS")
 public class Contact {
      
-	public Contact(Integer id, String firstname, String lastname, String email, String telephone) {
+	public Contact(/*Integer id, */String firstname, String lastname, String email, String telephone) {
 		// TODO Auto-generated constructor stub
 		this.email = email;
 		this.firstname = firstname;
-		this.id = id;
+		/*this.id = id;*/
 		this.lastname = lastname;
 		this.telephone = telephone;
 		
 	}
     @Id
-    @Column(name="ID")
-   /* @GeneratedValue*/
+    @Column(name = "ID", unique = true, nullable = false)
+    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "SEQ_CONTACT_ID")
+    @SequenceGenerator(name="SEQ_CONTACT_ID", sequenceName="SEQ_CONTACT_ID",allocationSize=1)
+    //@SequenceGenerator(name="SEQ_CONTACT_ID", sequenceName="SEQ_CONTACT_ID",allocationSize=1)    
     private Integer id;
      
     @Column(name="FIRSTNAME")
@@ -62,7 +66,7 @@ public class Contact {
         this.lastname = lastname;
     }
     public Integer getId() {
-        return id;
+        return this.id;
     }
     public void setId(Integer id) {
         this.id = id;

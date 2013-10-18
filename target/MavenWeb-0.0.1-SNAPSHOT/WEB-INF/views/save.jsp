@@ -5,11 +5,10 @@
 <html>
 <head>
 <title>Home</title>
-<link rel="stylesheet" href="<spring:theme code='stylesheet'/>"
-	type="text/css" />
+<%-- <link rel="stylesheet" href="<spring:theme code='stylesheet'/>"	type="text/css" /> --%>
 </head>
 <body>
-	<div id="header" style="text-align:right;">
+	<%-- <div id="header" style="text-align:right;">
 		<ul>
 			<li style="list-style: none;"><a href="<c:url value="/home" />">Home</a>
 				| <a href="javascript:closeWindow();">Logout</a></li>
@@ -17,7 +16,7 @@
 	</div>
 
 	<h1 class="titleClass" style="text-align: center;">${app_name}</h1>
-
+ --%>
 	<div id="menu-wrapper">
 		<div id="menu">
 			<ul>

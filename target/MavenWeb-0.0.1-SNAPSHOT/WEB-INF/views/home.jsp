@@ -10,68 +10,30 @@
 	type="text/css" /> --%>
 </head>
 <body>
-	<%-- <div id="header" style="text-align: right;">
-		<ul>
-			<li style="list-style: none;"><a href="<c:url value="/home" />">Home</a>
-				| <a href="javascript:closeWindow();">Logout</a></li>
-		</ul>
-	</div> --%>
-	<!-- class="titleClass" -->
-	<div>
-		<ul>
-			<li style="list-style: none;">
-				<p class="titleClass" style="text-align: center;">Proposal Life-cycle Management</p>
-				<%-- ${app_name} --%>
-			</li>
-		</ul>
+	<div id="accordion" style="font-size: medium;"> <!-- style="width: 800px; align: center; -->
+		<h3>Projects</h3>
+		<div>
+				<p>User Project</p>
+				<p>User Project 2</p>
+				<p> <a href="<c:url value="/savedata" />">SaveData</a> </p>
+		</div>
+		<h3>Events</h3>
+		<div>		
+			<p>Events</p>			
+			<p>Events 2</p>
+		</div>
+		<h3>Other Info</h3>
+		<div>		
+			<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>			
+			<p>Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh.</p>
+		</div>
 	</div>
-	<%-- <div id="menu-wrapper">
-		<div id="menu">
-			<ul class="tabs">
-				<li><a href="<c:url value="/project" />">Project</a></li>
-				<li><a href="<c:url value="/technology" />">Technology</a></li>
-				<li><a href="<c:url value="/home" />">Employee</a></li>
-				<li><a href="<c:url value="/reqt" />">Requirement</a></li>
-				<li><a href="<c:url value="/home" />">Schedule</a></li>
-				<li><a href="<c:url value="/home" />">Services</a></li>
-				<li><a href="<c:url value="/home" />">Cost</a></li>
-			</ul>
-		</div>
-	</div> --%>
-	
-	<div id="page" class="container">
-		<div id="box1">
-			<h2 class="title" >User Projects</h2>
-			<div style="clear: both;">&nbsp;</div>
-			<ul class="entry">
-				<li class="first"><a>User Project</a></li>
-				<li><a>User Project</a></li>
-				<li class="first"> <a href="<c:url value="/savedata" />">SaveData</a> </li> 
-			</ul>
-		</div>
-		
-		<div id="box2">
-			<h2 class="title">Upcoming events</h2>
-			<ul class="entry">
-				<li><a>Event</a></li>
-				<li><a>Event</a></li>
-			</ul>
-		</div>
-		<!-- <div id="box3">
-			<h2 class="title">This is a sample header</h2>
-			<ul class="entry">
-				<li class="first"><a>This is a sample text</a></li>
-				
-				<li><a>This is a sample text</a></li>
-			</ul>
-		</div> -->
-	</div>
-	<div id="page" class="container">
+	<div id="accordion" style="font-size: medium;">
 		<ul class="entry">
-			<li ><a href="<c:url value="/project" />" style="font-family: Tahoma;">Create a Project</a> | <a href="<c:url value="/findproject" />" style="font-family: Tahoma;">Find Project</a></li>
+			<li style="list-style: none;"><a href="<c:url value="/createProject" />" style="font-family: Tahoma;">Create a Project</a> | <a href="<c:url value="/findproject" />" style="font-family: Tahoma;">Find Project</a></li>
 		</ul>
 		<ul class="entry">
-			<li><a style="font-family: Tahoma;" href="<c:url value="/customer" />">Add Customer</a></li>
+			<li style="list-style: none;"><a style="font-family: Tahoma;" href="<c:url value="/customer" />">Add Customer</a></li>
 		</ul>
 	</div>
 	<%-- <div id="footer" class="container">

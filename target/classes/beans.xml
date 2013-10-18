@@ -2,12 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/tx 
-  http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+  		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  		http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
@@ -20,6 +23,11 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
+	
+	<mvc:resources mapping="/scripts/**" location="/WEB-INF/js/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/**" location="/" />
+	
 	<mvc:interceptors>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 	</mvc:interceptors>
@@ -57,7 +65,7 @@
 			</props>
 		</property>
 
-		<property name="packagesToScan" value="main.java.com.plm.form" />
+		<property name="packagesToScan" value="main.java.com.plm.*" />
 	</bean>
 
 	<bean id="transactionManager"
@@ -69,6 +77,9 @@
 		<!-- <property name="dataSource" ref="dataSource" /> -->
 	</bean>
 
+	<!-- <bean class="main.java.com.plm.controller.ProjectController"/> -->
+	<bean class="main.java.com.plm.model.Project"/>
+	   
 	<tx:annotation-driven />
 
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -85,6 +96,7 @@
 		<property name="basenames">
 			<list>
 				<value>version</value>
+				<value>theme-plm</value>
 			</list>
 		</property>
 	</bean>

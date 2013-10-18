@@ -21,7 +21,7 @@ public class SimpleMain {
 		
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
 		ContactDao contactDao = (ContactDao)applicationContext.getBean("contactDao");
-		Contact contact = new Contact(new Integer(513), "sad","das","s@b", "513" );
+		Contact contact = new Contact("sad","das","s@b", "513" );
 		contactDao.insert(contact);
 		
 		System.out.println("Contact inserted!");

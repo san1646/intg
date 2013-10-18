@@ -5,8 +5,7 @@
 <html>
 <head>
 <title>Create Project</title>
-<link rel="stylesheet" href="<spring:theme code='stylesheet'/>"
-	type="text/css" />
+<%-- <link rel="stylesheet" href="<spring:theme code='stylesheet'/>"	type="text/css" /> --%>
 </head>
 <body>
 	<div id="header" style="text-align:right;">

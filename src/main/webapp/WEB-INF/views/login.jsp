@@ -159,7 +159,7 @@
 	</style>
 
 </head>
-<body>
+<body style="text-align: center;">
 	<%-- <div id="header" style="text-align:right;">
 		<ul>
 			<li style="list-style: none;"><a href="<c:url value="/" />">Home</a>
@@ -169,44 +169,41 @@
 	<h1 class="titleClass" style="text-align: center;">${app_name}</h1> --%>
 	
 		
-		<div id="page" class="container" style="margin: 0px auto; text-align: center;">
+		<div id="page" class="container" style="margin-left: auto; margin-right: auto; width: 50%; text-align: center;">
 			<form id="f" action="<c:url value='j_spring_security_check' />"
 				method="post">
 
-				<table>
+				<table >
 					<tr><td>
-						<div id="box1">
-							<h2 class="title">Login page</h2>
+						<div id="box1" style="text-align: center">
+							<h2 class="title" style="text-align: center;">Login page</h2>
 							<div style="clear: both;">&nbsp;</div>
 						</div>
 						</td>
 					</tr>
 					<tr>
-						<td>User:</td>
-						<td><input type='text' name='j_username' value='' /></td>
+						<td style="text-align: center;">Username:</td>
+						<td style="text-align: center;"><input type='text' name='j_username' value='' /></td>
 					</tr>
 					<tr>
-						<td>Password:</td>
-						<td><input type='password' name='j_password' /></td>
+						<td style="text-align: center;">Password:</td>
+						<td style="text-align: center;"><input type='password' name='j_password' /></td>
 					</tr>
 					<tr>
-						<td colspan='2'><input name="submit" type="submit"
+						<td colspan='2' style="text-align: center;"><input name="submit" type="submit"
 							value="Submit" /></td>
-							
 					</tr>
-					
 					<tr>
-						<td colspan='2'><input name="reset" type="reset" /></td>
+						<td colspan='2' style="text-align: center;"><input name="reset" type="reset" /></td>
 					</tr>
 				</table>
-
 			</form>
 		</div>
-		<div id="page" class="container" style="border: 0;">
+		<div id="page" class="container" style="margin-left: auto; margin-right: auto; width: 50%; text-align: center; border: 0;">
 			<c:if test="${not empty error}">
 				<div class="errorblock" >
-					Your login attempt was not successful, try again.<br /> Caused :
-					${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+					Your login attempt was not successful, please try again.<br /> 
+					<%-- Caused : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}  --%>
 				</div>
 			</c:if>
 		</div>

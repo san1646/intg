@@ -7,8 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Home</title>
-<link rel="stylesheet" href="<spring:theme code='stylesheet'/>"
-	type="text/css" />
+<%-- <link rel="stylesheet" href="<spring:theme code='stylesheet'/>"	type="text/css" /> --%>
 </head>
 <body>
 

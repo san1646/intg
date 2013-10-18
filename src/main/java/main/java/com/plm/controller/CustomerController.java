@@ -19,6 +19,7 @@ public class CustomerController {
 	@RequestMapping(value = "/customer", method = { RequestMethod.GET })
 	public String home(final HttpServletRequest request,
             final HttpServletResponse response, Map<String, Object> model) {
+		
 		log.info("***Creating new customer...");
 		
 		MessageSource resources = new ClassPathXmlApplicationContext("beans.xml");
@@ -30,6 +31,7 @@ String app_name = resources.getMessage("app_name", null, "PLM", null);
 		 model.put("version", version);
 		 model.put("year", year);
 		 
-		return "customer";
+		/*return "customer";*/
+		 return "grid";
 	}
 }

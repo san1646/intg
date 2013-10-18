@@ -124,16 +124,18 @@ body {
 
 </head>
 <body>
+
 	<div id="tabs" style="font-size: medium;" >
 			<ul>
 				<li><a href="project">General</a></li>
+				<li><a href="customer">Customer</a></li>
 				<li><a href="technology">Technology</a></li>
 				<li><a href="employee">Team Members</a></li>
 				<li><a href="reqt">Requirement</a></li>
 				<li><a href="schedule">Schedule</a></li>
 				<li><a href="services">Services</a></li>
 				<li><a href="department">Department</a></li>
-				<li><a href="#">Cost</a></li>
+				<li><a href="calculateCost">Cost</a></li>
 			</ul>
 		</div>
 </body>
